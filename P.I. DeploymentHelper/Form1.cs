@@ -37,8 +37,6 @@ namespace P.I.DeploymentHelper
 
         }
 
-        
-
         private void Form_welcome_MouseUp(object sender, MouseEventArgs e)
         {
             windowMovable = false;
@@ -63,13 +61,22 @@ namespace P.I.DeploymentHelper
         private void Tb_source_TextChanged(object sender, EventArgs e)
         {
             var selectedItems = lb_source.SelectedItems;
-            lb_source.Items.Clear();
-            foreach (string selected in selectedItems)
+            List<string> storedSelections = new List<string>();
+            foreach (string selectedItem in selectedItems)
             {
-                var index = lb_source.Items.Add(selected);
-                lb_source.SetSelected(index,true);                
+                storedSelections.Add(selectedItem);
             }
+
+            lb_source.Items.Clear();
+
             Regex rx = new Regex($"(?i).*{tb_source.Text}.*(?-i)");
+
+            foreach (string storedItem in storedSelections)
+            {
+                var selectedIndex = lb_source.Items.Add(storedItem);
+                lb_source.SetSelected(selectedIndex, true);
+            }
+
             foreach (string file in files)
             {
                 string fileName = file.Substring(path.Length);
