@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
@@ -19,21 +14,28 @@ namespace P.I.DeploymentHelper
         private int mouseValueX;
         private int mouseValueY;
         private IEnumerable<string> files;
-        private readonly string path = @"d:\Works\C\Customers\Qatar\pipelines\";
+        private List<string> portables;
+        private readonly string path = @"d:\Works\Pipelines\";
         #endregion
         public form_welcome()
         {
             InitializeComponent();
         }
         
-        private void Form_welcome_Load(object sender, EventArgs e)
+        private void Form_welcome_Activated(object sender, EventArgs e)
         {
+            lb_source.Items.Clear();
             files = Directory.EnumerateFiles(path, "*.xml", SearchOption.AllDirectories);
             foreach (string file in files)
             {
                 string fileName = file.Substring(path.Length);
                 lb_source.Items.Add(fileName);
             }
+
+            var portableSoftwareSettings = Properties.Settings.Default.PortableSoftwares;
+            portables = portableSoftwareSettings.Split(new[] { "\r\n" }, StringSplitOptions.None).ToList();
+
+            lb_portableSource.Items.AddRange(portables.ToArray());
 
         }
 
@@ -62,6 +64,7 @@ namespace P.I.DeploymentHelper
         {
             var selectedItems = lb_source.SelectedItems;
             List<string> storedSelections = new List<string>();
+
             foreach (string selectedItem in selectedItems)
             {
                 storedSelections.Add(selectedItem);
@@ -80,12 +83,41 @@ namespace P.I.DeploymentHelper
             foreach (string file in files)
             {
                 string fileName = file.Substring(path.Length);
-                if (rx.IsMatch(fileName))
+                if (rx.IsMatch(fileName) && !storedSelections.Contains<string>(fileName))
                 {
                     lb_source.Items.Add(fileName);
                 }
                     
             }                        
+        }
+
+        private void Tb_portableSource_TextChanged(object sender, EventArgs e)
+        {
+            var selectedItems = lb_portableSource.SelectedItems;
+            List<string> storedSelections = new List<string>();
+            foreach (string selectedItem in selectedItems)
+            {
+                storedSelections.Add(selectedItem);
+            }
+
+            lb_portableSource.Items.Clear();
+
+            Regex rx = new Regex($"(?i).*{tb_portableSource.Text}.*(?-i)");
+
+            foreach (string storedItem in storedSelections)
+            {
+                var selectedIndex = lb_portableSource.Items.Add(storedItem);
+                lb_portableSource.SetSelected(selectedIndex, true);
+            }
+
+            foreach (string portable in portables)
+            {
+                if (rx.IsMatch(portable) && !storedSelections.Contains<string>(portable))
+                {
+                    lb_portableSource.Items.Add(portable);
+                }
+
+            }
         }
     }
 }

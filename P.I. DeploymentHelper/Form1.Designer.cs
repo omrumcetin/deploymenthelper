@@ -46,29 +46,19 @@
             this.lb_source.ItemHeight = 15;
             this.lb_source.Location = new System.Drawing.Point(-1, -2);
             this.lb_source.Name = "lb_source";
-            this.lb_source.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lb_source.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lb_source.Size = new System.Drawing.Size(414, 525);
             this.lb_source.TabIndex = 0;
             // 
             // lb_portableSource
             // 
-            this.lb_portableSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lb_portableSource.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_portableSource.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lb_portableSource.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_portableSource.FormattingEnabled = true;
             this.lb_portableSource.ItemHeight = 15;
-            this.lb_portableSource.Items.AddRange(new object[] {
-            "TOAD",
-            "InstantClient-Basic",
-            "InstantClient-SqlPlus",
-            "InstantClient-Tools",
-            "Notepad++",
-            "ProcessHacker",
-            "SQLiteStudio",
-            "TotalCommander",
-            "WinSCP",
-            "Chrome"});
             this.lb_portableSource.Location = new System.Drawing.Point(411, -2);
             this.lb_portableSource.Name = "lb_portableSource";
             this.lb_portableSource.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
@@ -77,10 +67,14 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button1.Location = new System.Drawing.Point(816, 485);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(61, 55);
@@ -91,19 +85,22 @@
             // tb_source
             // 
             this.tb_source.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tb_source.Location = new System.Drawing.Point(0, 519);
+            this.tb_source.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_source.Location = new System.Drawing.Point(0, 516);
             this.tb_source.Name = "tb_source";
-            this.tb_source.Size = new System.Drawing.Size(413, 20);
+            this.tb_source.Size = new System.Drawing.Size(413, 23);
             this.tb_source.TabIndex = 3;
             this.tb_source.TextChanged += new System.EventHandler(this.Tb_source_TextChanged);
             // 
             // tb_portableSource
             // 
             this.tb_portableSource.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tb_portableSource.Location = new System.Drawing.Point(411, 519);
+            this.tb_portableSource.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_portableSource.Location = new System.Drawing.Point(411, 516);
             this.tb_portableSource.Name = "tb_portableSource";
-            this.tb_portableSource.Size = new System.Drawing.Size(406, 20);
+            this.tb_portableSource.Size = new System.Drawing.Size(406, 23);
             this.tb_portableSource.TabIndex = 4;
+            this.tb_portableSource.TextChanged += new System.EventHandler(this.Tb_portableSource_TextChanged);
             // 
             // form_welcome
             // 
@@ -120,7 +117,7 @@
             this.Name = "form_welcome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P.I. Deployment Helper";
-            this.Load += new System.EventHandler(this.Form_welcome_Load);
+            this.Activated += new System.EventHandler(this.Form_welcome_Activated);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_welcome_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_welcome_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_welcome_MouseUp);
