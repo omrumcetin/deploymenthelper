@@ -22,18 +22,5 @@ namespace P.I.DeploymentHelper.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("TOAD\r\nInstantClient-Basic\r\nInstantClient-SqlPlus\r\nInstantClient-Tools\r\nNotepad++\r" +
-            "\nProcessHacker\r\nSQLiteStudio\r\nTotalCommander\r\nWinSCP\r\nGoogle Chrome")]
-        public string PortableSoftwares {
-            get {
-                return ((string)(this["PortableSoftwares"]));
-            }
-            set {
-                this["PortableSoftwares"] = value;
-            }
-        }
     }
 }

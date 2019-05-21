@@ -46,7 +46,7 @@
             this.lb_source.ItemHeight = 15;
             this.lb_source.Location = new System.Drawing.Point(-1, -2);
             this.lb_source.Name = "lb_source";
-            this.lb_source.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lb_source.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lb_source.Size = new System.Drawing.Size(414, 525);
             this.lb_source.TabIndex = 0;
             // 
@@ -118,6 +118,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P.I. Deployment Helper";
             this.Activated += new System.EventHandler(this.Form_welcome_Activated);
+            this.Load += new System.EventHandler(this.Form_welcome_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_welcome_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_welcome_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_welcome_MouseUp);

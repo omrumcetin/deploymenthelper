@@ -4,6 +4,7 @@ using System.Linq;
 using System.IO;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Configuration;
 
 namespace P.I.DeploymentHelper
 {
@@ -14,8 +15,8 @@ namespace P.I.DeploymentHelper
         private int mouseValueX;
         private int mouseValueY;
         private IEnumerable<string> files;
-        private List<string> portables;
-        private readonly string path = @"d:\Works\Pipelines\";
+        private List<string> portables = new List<string>();
+        private readonly string path = @"Pipelines\";
         #endregion
         public form_welcome()
         {
@@ -32,10 +33,21 @@ namespace P.I.DeploymentHelper
                 lb_source.Items.Add(fileName);
             }
 
-            var portableSoftwareSettings = Properties.Settings.Default.PortableSoftwares;
-            portables = portableSoftwareSettings.Split(new[] { "\r\n" }, StringSplitOptions.None).ToList();
 
-            lb_portableSource.Items.AddRange(portables.ToArray());
+            var customConfig = (ToolsConfigSection)ConfigurationManager.GetSection("tools");
+
+            foreach (PortableConfigElement portableElement in customConfig.portables){
+                lb_portableSource.Items.Add(portableElement.name);
+                portables.Add(portableElement.name);
+            }
+
+
+
+            //var value = ConfigurationSettings.AppSettings["TOAD"].ToString();
+            //var portableSoftwareSettings = Properties.Settings.Default.PortableSoftwares;
+            //portables = portableSoftwareSettings.Split(new[] { "\r\n" }, StringSplitOptions.None).ToList();
+
+            //lb_portableSource.Items.AddRange(portables.ToArray());
 
         }
 
@@ -118,6 +130,14 @@ namespace P.I.DeploymentHelper
                 }
 
             }
+        }
+
+        private void Form_welcome_Load(object sender, EventArgs e)
+        {
+            Directory.CreateDirectory("Pipelines");
+            Directory.CreateDirectory("PortableSoftwares");
+
+
         }
     }
 }
