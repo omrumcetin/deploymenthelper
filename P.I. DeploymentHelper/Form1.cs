@@ -32,22 +32,13 @@ namespace P.I.DeploymentHelper
                 string fileName = file.Substring(path.Length);
                 lb_source.Items.Add(fileName);
             }
-
-
+            lb_portableSource.Items.Clear();
             var customConfig = (ToolsConfigSection)ConfigurationManager.GetSection("tools");
-
-            foreach (PortableConfigElement portableElement in customConfig.portables){
+            foreach (PortableConfigElement portableElement in customConfig.portables)
+            {
                 lb_portableSource.Items.Add(portableElement.name);
                 portables.Add(portableElement.name);
             }
-
-
-
-            //var value = ConfigurationSettings.AppSettings["TOAD"].ToString();
-            //var portableSoftwareSettings = Properties.Settings.Default.PortableSoftwares;
-            //portables = portableSoftwareSettings.Split(new[] { "\r\n" }, StringSplitOptions.None).ToList();
-
-            //lb_portableSource.Items.AddRange(portables.ToArray());
 
         }
 
@@ -138,6 +129,16 @@ namespace P.I.DeploymentHelper
             Directory.CreateDirectory("PortableSoftwares");
 
 
+        }
+
+        private void BttnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void BttnClose_Click(object sender, EventArgs e)
+        {
+            System.Environment.Exit(1);
         }
     }
 }
