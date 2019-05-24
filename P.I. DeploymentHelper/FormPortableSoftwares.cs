@@ -5,15 +5,49 @@ using System.Xml;
 
 namespace P.I.DeploymentHelper
 {
-    public partial class FormSettings : Form
+    public partial class FormPortableSoftwares : Form
     {
-        public FormSettings()
+        public FormPortableSoftwares()
         {
             InitializeComponent();
         }
-        #region globalvariables
+
+        #region ClassVariables
+        private bool windowMovable = false;
+        private int mouseValueX;
+        private int mouseValueY;
         int selectedIndex = 0;
         bool newEntry = false;
+        #endregion
+
+        #region Template
+        private const int CS_DROPSHADOW = 0x20000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                return cp;
+            }
+        }
+        private void FormSettings_MouseUp(object sender, MouseEventArgs e)
+        {
+            windowMovable = false;
+        }
+        private void FormSettings_MouseDown(object sender, MouseEventArgs e)
+        {
+            windowMovable = true;
+            mouseValueX = e.X;
+            mouseValueY = e.Y;
+        }
+        private void FormSettings_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (windowMovable)
+            {
+                this.SetDesktopLocation(MousePosition.X - mouseValueX, MousePosition.Y - mouseValueY);
+            }
+        }
         #endregion
 
         private void BttnClose_Click(object sender, EventArgs e)
@@ -105,5 +139,6 @@ namespace P.I.DeploymentHelper
             }
             newEntry = newEntryAttempt;
         }
+
     }
 }

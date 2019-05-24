@@ -20,4 +20,4 @@ d:\Repos\DeploymentHelper\P.I. DeploymentHelper\obj\Debug\P.I. DeploymentHelper.
 d:\Repos\DeploymentHelper\P.I. DeploymentHelper\obj\Debug\P.I.DeploymentHelper.exe
 d:\Repos\DeploymentHelper\P.I. DeploymentHelper\obj\Debug\P.I.DeploymentHelper.pdb
 D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. DeploymentHelper\bin\Debug\tools.config
-D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. DeploymentHelper\obj\Debug\P.I.DeploymentHelper.FormSettings.resources
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. DeploymentHelper\obj\Debug\P.I.DeploymentHelper.FormPortableSoftwares.resources

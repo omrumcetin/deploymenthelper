@@ -22,7 +22,41 @@ namespace P.I.DeploymentHelper
         {
             InitializeComponent();
         }
-        
+
+        #region Template
+        private const int CS_DROPSHADOW = 0x00020000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                return cp;
+            }
+        }
+
+        private void Form_welcome_MouseUp(object sender, MouseEventArgs e)
+        {
+            windowMovable = false;
+
+        }
+
+        private void Form_welcome_MouseDown(object sender, MouseEventArgs e)
+        {
+            windowMovable = true;
+            mouseValueX = e.X;
+            mouseValueY = e.Y;
+        }
+
+        private void Form_welcome_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (windowMovable)
+            {
+                this.SetDesktopLocation(MousePosition.X - mouseValueX, MousePosition.Y - mouseValueY);
+            }
+        }
+        #endregion
+
         private void Form_welcome_Activated(object sender, EventArgs e)
         {
             lb_source.Items.Clear();
@@ -41,28 +75,7 @@ namespace P.I.DeploymentHelper
             }
 
         }
-
-        private void Form_welcome_MouseUp(object sender, MouseEventArgs e)
-        {
-            windowMovable = false;
-            
-        }
-
-        private void Form_welcome_MouseDown(object sender, MouseEventArgs e)
-        {
-            windowMovable = true;
-            mouseValueX = e.X;
-            mouseValueY = e.Y;
-        }
-
-        private void Form_welcome_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (windowMovable)
-            {
-                this.SetDesktopLocation(MousePosition.X - mouseValueX, MousePosition.Y - mouseValueY);
-            }
-        }
-
+        
         private void Tb_source_TextChanged(object sender, EventArgs e)
         {
             var selectedItems = lb_source.SelectedItems;
@@ -143,8 +156,8 @@ namespace P.I.DeploymentHelper
 
         private void RemoteSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormSettings formSettings = new FormSettings();
-            formSettings.ShowDialog();
+            FormPortableSoftwares formPortableSoftwares = new FormPortableSoftwares();
+            formPortableSoftwares.ShowDialog();
         }
     }
 }
