@@ -26,6 +26,12 @@ namespace P.I.DeploymentHelper
             get { return (string)base["filename"]; }
             set { base["filename"] = value; }
         }
+        [ConfigurationProperty("remotepath")]
+        public string remotepath
+        {
+            get { return (string)base["remotepath"]; }
+            set { base["remotepath"] = value; }
+        }
     }
 
     [ConfigurationCollection(typeof(PortableConfigElement), AddItemName = "portable")]

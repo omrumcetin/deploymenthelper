@@ -225,6 +225,7 @@
             this.remoteSettingsToolStripMenuItem.Name = "remoteSettingsToolStripMenuItem";
             this.remoteSettingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.remoteSettingsToolStripMenuItem.Text = "Remote Settings";
+            this.remoteSettingsToolStripMenuItem.Click += new System.EventHandler(this.RemoteSettingsToolStripMenuItem_Click);
             // 
             // form_welcome
             // 
@@ -242,6 +243,7 @@
             this.Controls.Add(this.lb_portableSource);
             this.Controls.Add(this.lb_source);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "form_welcome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P.I. Deployment Helper";
