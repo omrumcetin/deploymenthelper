@@ -44,6 +44,8 @@
             this.remoteSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.ButtonCancel = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -249,12 +251,41 @@
             this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
             // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(815, 408);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(57, 15);
+            this.progressBar.TabIndex = 11;
+            // 
+            // ButtonCancel
+            // 
+            this.ButtonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(108)))));
+            this.ButtonCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonCancel.BackgroundImage")));
+            this.ButtonCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ButtonCancel.FlatAppearance.BorderSize = 0;
+            this.ButtonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonCancel.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonCancel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.ButtonCancel.Location = new System.Drawing.Point(818, 429);
+            this.ButtonCancel.Name = "ButtonCancel";
+            this.ButtonCancel.Size = new System.Drawing.Size(50, 50);
+            this.ButtonCancel.TabIndex = 12;
+            this.ButtonCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ButtonCancel.UseMnemonic = false;
+            this.ButtonCancel.UseVisualStyleBackColor = false;
+            // 
             // form_welcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(72)))));
             this.ClientSize = new System.Drawing.Size(876, 539);
+            this.Controls.Add(this.ButtonCancel);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tb_portableSource);
             this.Controls.Add(this.lb_portableSource);
             this.Controls.Add(this.ButtonSubmit);
@@ -302,6 +333,8 @@
         private System.Windows.Forms.ToolStripMenuItem remoteSettingsToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button ButtonCancel;
     }
 }
 

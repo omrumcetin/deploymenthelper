@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Configuration;
 using System.IO.Compression;
+using System.Threading;
 
 namespace P.I.DeploymentHelper
 {
@@ -18,10 +19,13 @@ namespace P.I.DeploymentHelper
         private IEnumerable<string> files;
         private List<string> portables = new List<string>();
         private readonly string path = @"Pipelines\";
+        private bool IsCancelled = false;
+        private ToolsConfigSection customConfig = (ToolsConfigSection)ConfigurationManager.GetSection("tools");
         #endregion
         public form_welcome()
         {
             InitializeComponent();
+  
         }
 
         #region Template
@@ -57,7 +61,16 @@ namespace P.I.DeploymentHelper
             }
         }
         #endregion
-
+        private void Form_welcome_Load(object sender, EventArgs e)
+        {
+            Directory.CreateDirectory("Pipelines");
+            Directory.CreateDirectory("PortableSoftwares");
+            ButtonCancel.Visible = false;
+            progressBar.Visible = false;
+            progressBar.Minimum = 1;
+            progressBar.Value = 1;
+            progressBar.Step = 1;
+        }
         private void Form_welcome_Activated(object sender, EventArgs e)
         {
             lb_source.Items.Clear();
@@ -68,7 +81,6 @@ namespace P.I.DeploymentHelper
                 lb_source.Items.Add(fileName);
             }
             lb_portableSource.Items.Clear();
-            var customConfig = (ToolsConfigSection)ConfigurationManager.GetSection("tools");
             foreach (PortableConfigElement portableElement in customConfig.portables)
             {
                 lb_portableSource.Items.Add(portableElement.name);
@@ -76,7 +88,6 @@ namespace P.I.DeploymentHelper
             }
 
         }
-        
         private void Tb_source_TextChanged(object sender, EventArgs e)
         {
             var selectedItems = lb_source.SelectedItems;
@@ -107,7 +118,6 @@ namespace P.I.DeploymentHelper
                     
             }                        
         }
-
         private void Tb_portableSource_TextChanged(object sender, EventArgs e)
         {
             var selectedItems = lb_portableSource.SelectedItems;
@@ -136,49 +146,65 @@ namespace P.I.DeploymentHelper
 
             }
         }
-
-        private void Form_welcome_Load(object sender, EventArgs e)
-        {
-            Directory.CreateDirectory("Pipelines");
-            Directory.CreateDirectory("PortableSoftwares");
-        }
-
         private void BttnMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void BttnClose_Click(object sender, EventArgs e)
         {
             System.Environment.Exit(1);
         }
-
         private void RemoteSettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormPortableSoftwares formPortableSoftwares = new FormPortableSoftwares();
             formPortableSoftwares.ShowDialog();
         }
-
         private void ButtonSubmit_Click(object sender, EventArgs e)
         {
             //TODO create bat file
-            var customConfig = (ToolsConfigSection)ConfigurationManager.GetSection("tools");
             IEnumerable<PortableConfigElement> configs = customConfig.portables.Cast<PortableConfigElement>();
-            if (lb_portableSource.SelectedIndex != -1)
+            IEnumerable<string> cachePortableCache = lb_portableSource.SelectedItems.Cast<string>();
+            IEnumerable<string> cachePipelines = lb_source.SelectedItems.Cast<string>();
+
+            if (cachePortableCache.FirstOrDefault() != null || cachePipelines.FirstOrDefault() != null)
             {
-                using (ZipArchive newFile = ZipFile.Open("Deployment.zip", ZipArchiveMode.Update))
-                {
-                    foreach (string name in lb_portableSource.SelectedItems)
-                    { 
-                        var singleConfig = configs.Where(x => x.name == name).FirstOrDefault();
-                        if (singleConfig != null)
+                ButtonCancel.Visible = true;
+                progressBar.Visible = true;
+                progressBar.Maximum = cachePortableCache.Count() + cachePipelines.Count();
+                Thread t1 = new Thread(delegate()
+                {   
+                    using (ZipArchive newFile = ZipFile.Open("Deployment.zip", ZipArchiveMode.Update))
+                    {
+                        foreach (string name in cachePortableCache)
                         {
-                            newFile.CreateEntryFromFile(string.Concat(@"PortableSoftwares\", singleConfig.filename),singleConfig.filename);
+                            var singleConfig = configs.Where(x => x.name == name).FirstOrDefault();
+                            if (singleConfig != null)
+                            {
+                                newFile.CreateEntryFromFile(string.Concat(@"PortableSoftwares\", singleConfig.filename), singleConfig.filename);
+                            }
+                            Invoke((MethodInvoker)delegate{progressBar.PerformStep();});
+                            
+                        }
+                        foreach (string name in cachePipelines)
+                        {
+                            newFile.CreateEntryFromFile(string.Concat(@"Pipelines\", name), string.Concat(@"Pipelines\", name));
+                            Invoke((MethodInvoker)delegate { progressBar.PerformStep(); });
                         }
                     }
-                }
+                    //ButtonCancel.Visible = false;
+                    Invoke((MethodInvoker)delegate { ButtonCancel.Visible = false; });
+                    //progressBar.Visible = false;
+                    Invoke((MethodInvoker)delegate { progressBar.Visible = false; });
+                });
+                t1.Start();
+            }
+            else
+            {
+                MessageBox.Show("You did not select anything to create zip file!","Retry", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             
         }
+
+        //zip selections
     }
 }
