@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Configuration;
+using System.IO.Compression;
 
 namespace P.I.DeploymentHelper
 {
@@ -140,8 +141,6 @@ namespace P.I.DeploymentHelper
         {
             Directory.CreateDirectory("Pipelines");
             Directory.CreateDirectory("PortableSoftwares");
-
-
         }
 
         private void BttnMinimize_Click(object sender, EventArgs e)
@@ -158,6 +157,28 @@ namespace P.I.DeploymentHelper
         {
             FormPortableSoftwares formPortableSoftwares = new FormPortableSoftwares();
             formPortableSoftwares.ShowDialog();
+        }
+
+        private void ButtonSubmit_Click(object sender, EventArgs e)
+        {
+            //TODO create bat file
+            var customConfig = (ToolsConfigSection)ConfigurationManager.GetSection("tools");
+            IEnumerable<PortableConfigElement> configs = customConfig.portables.Cast<PortableConfigElement>();
+            if (lb_portableSource.SelectedIndex != -1)
+            {
+                using (ZipArchive newFile = ZipFile.Open("Deployment.zip", ZipArchiveMode.Update))
+                {
+                    foreach (string name in lb_portableSource.SelectedItems)
+                    { 
+                        var singleConfig = configs.Where(x => x.name == name).FirstOrDefault();
+                        if (singleConfig != null)
+                        {
+                            newFile.CreateEntryFromFile(string.Concat(@"PortableSoftwares\", singleConfig.filename),singleConfig.filename);
+                        }
+                    }
+                }
+            }
+            
         }
     }
 }

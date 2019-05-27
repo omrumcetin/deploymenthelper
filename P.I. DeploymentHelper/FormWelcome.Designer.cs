@@ -32,7 +32,7 @@
             this.lb_source = new System.Windows.Forms.ListBox();
             this.lb_portableSource = new System.Windows.Forms.ListBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ButtonSubmit = new System.Windows.Forms.Button();
             this.tb_source = new System.Windows.Forms.TextBox();
             this.tb_portableSource = new System.Windows.Forms.TextBox();
             this.BttnClose = new System.Windows.Forms.Button();
@@ -82,25 +82,26 @@
             this.lb_portableSource.Size = new System.Drawing.Size(398, 480);
             this.lb_portableSource.TabIndex = 1;
             // 
-            // button1
+            // ButtonSubmit
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ButtonSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(108)))));
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(818, 485);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 50);
-            this.button1.TabIndex = 2;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseMnemonic = false;
-            this.button1.UseVisualStyleBackColor = false;
+            this.ButtonSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(108)))));
+            this.ButtonSubmit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonSubmit.BackgroundImage")));
+            this.ButtonSubmit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ButtonSubmit.FlatAppearance.BorderSize = 0;
+            this.ButtonSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonSubmit.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonSubmit.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.ButtonSubmit.Location = new System.Drawing.Point(818, 485);
+            this.ButtonSubmit.Name = "ButtonSubmit";
+            this.ButtonSubmit.Size = new System.Drawing.Size(50, 50);
+            this.ButtonSubmit.TabIndex = 2;
+            this.ButtonSubmit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ButtonSubmit.UseMnemonic = false;
+            this.ButtonSubmit.UseVisualStyleBackColor = false;
+            this.ButtonSubmit.Click += new System.EventHandler(this.ButtonSubmit_Click);
             // 
             // tb_source
             // 
@@ -217,7 +218,7 @@
             this.fetchPipelinesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.fetchPipelinesToolStripMenuItem.Name = "fetchPipelinesToolStripMenuItem";
             this.fetchPipelinesToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.fetchPipelinesToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.fetchPipelinesToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.fetchPipelinesToolStripMenuItem.Text = "Fetch Pipelines";
             // 
             // remoteSettingsToolStripMenuItem
@@ -256,7 +257,7 @@
             this.ClientSize = new System.Drawing.Size(876, 539);
             this.Controls.Add(this.tb_portableSource);
             this.Controls.Add(this.lb_portableSource);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ButtonSubmit);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
@@ -289,7 +290,7 @@
         private System.Windows.Forms.ListBox lb_source;
         private System.Windows.Forms.ListBox lb_portableSource;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ButtonSubmit;
         private System.Windows.Forms.TextBox tb_source;
         private System.Windows.Forms.TextBox tb_portableSource;
         private System.Windows.Forms.Button BttnClose;
