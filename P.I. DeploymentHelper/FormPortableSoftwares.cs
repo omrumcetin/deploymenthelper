@@ -5,9 +5,9 @@ using System.Xml;
 
 namespace P.I.DeploymentHelper
 {
-    public partial class FormPortableSoftwares : Form
+    public partial class Form_PortableSoftwares : Form
     {
-        public FormPortableSoftwares()
+        public Form_PortableSoftwares()
         {
             InitializeComponent();
         }

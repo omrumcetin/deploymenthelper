@@ -16,7 +16,7 @@ namespace P.I.DeploymentHelper
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new form_welcome());
+            Application.Run(new Form_Welcome());
         }
     }
 }

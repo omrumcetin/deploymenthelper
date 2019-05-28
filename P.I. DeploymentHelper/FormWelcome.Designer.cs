@@ -1,6 +1,6 @@
 ﻿namespace P.I.DeploymentHelper
 {
-    partial class form_welcome
+    partial class Form_Welcome
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_welcome));
-            this.lb_source = new System.Windows.Forms.ListBox();
-            this.lb_portableSource = new System.Windows.Forms.ListBox();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Welcome));
+            this.ListBox_Pipelines = new System.Windows.Forms.ListBox();
+            this.ListBox_Portables = new System.Windows.Forms.ListBox();
             this.ButtonSubmit = new System.Windows.Forms.Button();
             this.tb_source = new System.Windows.Forms.TextBox();
             this.tb_portableSource = new System.Windows.Forms.TextBox();
@@ -45,44 +44,43 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.ButtonCancel = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // lb_source
+            // ListBox_Pipelines
             // 
-            this.lb_source.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ListBox_Pipelines.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.lb_source.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(162)))));
-            this.lb_source.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lb_source.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_source.ForeColor = System.Drawing.Color.White;
-            this.lb_source.FormattingEnabled = true;
-            this.lb_source.ItemHeight = 15;
-            this.lb_source.Location = new System.Drawing.Point(0, 44);
-            this.lb_source.Name = "lb_source";
-            this.lb_source.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lb_source.Size = new System.Drawing.Size(413, 480);
-            this.lb_source.TabIndex = 0;
+            this.ListBox_Pipelines.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(162)))));
+            this.ListBox_Pipelines.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ListBox_Pipelines.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListBox_Pipelines.ForeColor = System.Drawing.Color.White;
+            this.ListBox_Pipelines.FormattingEnabled = true;
+            this.ListBox_Pipelines.ItemHeight = 15;
+            this.ListBox_Pipelines.Location = new System.Drawing.Point(0, 44);
+            this.ListBox_Pipelines.Name = "ListBox_Pipelines";
+            this.ListBox_Pipelines.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.ListBox_Pipelines.Size = new System.Drawing.Size(413, 480);
+            this.ListBox_Pipelines.TabIndex = 0;
             // 
-            // lb_portableSource
+            // ListBox_Portables
             // 
-            this.lb_portableSource.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ListBox_Portables.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lb_portableSource.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(162)))));
-            this.lb_portableSource.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lb_portableSource.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_portableSource.ForeColor = System.Drawing.Color.White;
-            this.lb_portableSource.FormattingEnabled = true;
-            this.lb_portableSource.ItemHeight = 15;
-            this.lb_portableSource.Location = new System.Drawing.Point(411, 44);
-            this.lb_portableSource.Name = "lb_portableSource";
-            this.lb_portableSource.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lb_portableSource.Size = new System.Drawing.Size(398, 480);
-            this.lb_portableSource.TabIndex = 1;
+            this.ListBox_Portables.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(162)))));
+            this.ListBox_Portables.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ListBox_Portables.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ListBox_Portables.ForeColor = System.Drawing.Color.White;
+            this.ListBox_Portables.FormattingEnabled = true;
+            this.ListBox_Portables.ItemHeight = 15;
+            this.ListBox_Portables.Location = new System.Drawing.Point(411, 44);
+            this.ListBox_Portables.Name = "ListBox_Portables";
+            this.ListBox_Portables.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.ListBox_Portables.Size = new System.Drawing.Size(398, 480);
+            this.ListBox_Portables.TabIndex = 1;
             // 
             // ButtonSubmit
             // 
@@ -114,7 +112,7 @@
             this.tb_source.Name = "tb_source";
             this.tb_source.Size = new System.Drawing.Size(413, 23);
             this.tb_source.TabIndex = 3;
-            this.tb_source.TextChanged += new System.EventHandler(this.Tb_source_TextChanged);
+            this.tb_source.TextChanged += new System.EventHandler(this.TextBox_Portables_TextChanged);
             // 
             // tb_portableSource
             // 
@@ -125,7 +123,7 @@
             this.tb_portableSource.Name = "tb_portableSource";
             this.tb_portableSource.Size = new System.Drawing.Size(398, 23);
             this.tb_portableSource.TabIndex = 4;
-            this.tb_portableSource.TextChanged += new System.EventHandler(this.Tb_portableSource_TextChanged);
+            this.tb_portableSource.TextChanged += new System.EventHandler(this.TextBox_Portables_TextChanged);
             // 
             // BttnClose
             // 
@@ -222,6 +220,7 @@
             this.fetchPipelinesToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.fetchPipelinesToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.fetchPipelinesToolStripMenuItem.Text = "Fetch Pipelines";
+            this.fetchPipelinesToolStripMenuItem.Click += new System.EventHandler(this.FetchPipelinesToolStripMenuItem_Click);
             // 
             // remoteSettingsToolStripMenuItem
             // 
@@ -253,41 +252,20 @@
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(815, 408);
+            this.progressBar.Location = new System.Drawing.Point(815, 469);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(57, 15);
             this.progressBar.TabIndex = 11;
             // 
-            // ButtonCancel
-            // 
-            this.ButtonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(108)))));
-            this.ButtonCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonCancel.BackgroundImage")));
-            this.ButtonCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ButtonCancel.FlatAppearance.BorderSize = 0;
-            this.ButtonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonCancel.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonCancel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ButtonCancel.Location = new System.Drawing.Point(818, 429);
-            this.ButtonCancel.Name = "ButtonCancel";
-            this.ButtonCancel.Size = new System.Drawing.Size(50, 50);
-            this.ButtonCancel.TabIndex = 12;
-            this.ButtonCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ButtonCancel.UseMnemonic = false;
-            this.ButtonCancel.UseVisualStyleBackColor = false;
-            // 
-            // form_welcome
+            // Form_Welcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(72)))));
             this.ClientSize = new System.Drawing.Size(876, 539);
-            this.Controls.Add(this.ButtonCancel);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tb_portableSource);
-            this.Controls.Add(this.lb_portableSource);
+            this.Controls.Add(this.ListBox_Portables);
             this.Controls.Add(this.ButtonSubmit);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pictureBox1);
@@ -296,14 +274,15 @@
             this.Controls.Add(this.LabelWindowTitle);
             this.Controls.Add(this.BttnMinimize);
             this.Controls.Add(this.tb_source);
-            this.Controls.Add(this.lb_source);
+            this.Controls.Add(this.ListBox_Pipelines);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "form_welcome";
+            this.Name = "Form_Welcome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "P.I. Deployment Helper";
-            this.Activated += new System.EventHandler(this.Form_welcome_Activated);
-            this.Load += new System.EventHandler(this.Form_welcome_Load);
+            this.Activated += new System.EventHandler(this.Form_Welcome_Activated);
+            this.Deactivate += new System.EventHandler(this.Form_Welcome_Deactivate);
+            this.Load += new System.EventHandler(this.Form_Welcome_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form_welcome_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form_welcome_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form_welcome_MouseUp);
@@ -318,9 +297,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox lb_source;
-        private System.Windows.Forms.ListBox lb_portableSource;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.ListBox ListBox_Pipelines;
+        private System.Windows.Forms.ListBox ListBox_Portables;
         private System.Windows.Forms.Button ButtonSubmit;
         private System.Windows.Forms.TextBox tb_source;
         private System.Windows.Forms.TextBox tb_portableSource;
@@ -334,7 +312,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.Button ButtonCancel;
     }
 }
 
