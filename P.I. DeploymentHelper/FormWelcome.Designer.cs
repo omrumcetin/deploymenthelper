@@ -76,7 +76,7 @@
             this.ListBox_Portables.ForeColor = System.Drawing.Color.White;
             this.ListBox_Portables.FormattingEnabled = true;
             this.ListBox_Portables.ItemHeight = 15;
-            this.ListBox_Portables.Location = new System.Drawing.Point(411, 44);
+            this.ListBox_Portables.Location = new System.Drawing.Point(413, 44);
             this.ListBox_Portables.Name = "ListBox_Portables";
             this.ListBox_Portables.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ListBox_Portables.Size = new System.Drawing.Size(398, 480);
@@ -84,8 +84,7 @@
             // 
             // ButtonSubmit
             // 
-            this.ButtonSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.ButtonSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(108)))));
             this.ButtonSubmit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonSubmit.BackgroundImage")));
@@ -108,27 +107,26 @@
             this.tb_source.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(162)))));
             this.tb_source.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_source.ForeColor = System.Drawing.Color.White;
-            this.tb_source.Location = new System.Drawing.Point(0, 516);
+            this.tb_source.Location = new System.Drawing.Point(0, 524);
             this.tb_source.Name = "tb_source";
             this.tb_source.Size = new System.Drawing.Size(413, 23);
             this.tb_source.TabIndex = 3;
-            this.tb_source.TextChanged += new System.EventHandler(this.TextBox_Portables_TextChanged);
+            this.tb_source.TextChanged += new System.EventHandler(this.TextBox_Pipelines_TextChanged);
             // 
             // tb_portableSource
             // 
             this.tb_portableSource.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(162)))));
             this.tb_portableSource.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_portableSource.ForeColor = System.Drawing.Color.White;
-            this.tb_portableSource.Location = new System.Drawing.Point(411, 516);
+            this.tb_portableSource.Location = new System.Drawing.Point(413, 524);
             this.tb_portableSource.Name = "tb_portableSource";
-            this.tb_portableSource.Size = new System.Drawing.Size(398, 23);
+            this.tb_portableSource.Size = new System.Drawing.Size(399, 23);
             this.tb_portableSource.TabIndex = 4;
             this.tb_portableSource.TextChanged += new System.EventHandler(this.TextBox_Portables_TextChanged);
             // 
             // BttnClose
             // 
-            this.BttnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.BttnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BttnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(72)))));
             this.BttnClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BttnClose.BackgroundImage")));
@@ -146,8 +144,7 @@
             // 
             // BttnMinimize
             // 
-            this.BttnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.BttnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BttnMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(72)))));
             this.BttnMinimize.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BttnMinimize.BackgroundImage")));
@@ -176,8 +173,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.menuStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(108)))));
@@ -190,7 +186,7 @@
             this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(811, 48);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(61, 62);
+            this.menuStrip1.Size = new System.Drawing.Size(61, 70);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90;
@@ -207,7 +203,7 @@
             this.settingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("settingsToolStripMenuItem.Image")));
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.RightToLeftAutoMirrorImage = true;
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(54, 58);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(54, 66);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
@@ -262,7 +258,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(72)))));
-            this.ClientSize = new System.Drawing.Size(876, 539);
+            this.ClientSize = new System.Drawing.Size(876, 547);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.tb_portableSource);
             this.Controls.Add(this.ListBox_Portables);

@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Configuration;
 using System.IO.Compression;
 using System.Threading;
+using System.Security.Principal;
 
 namespace P.I.DeploymentHelper
 {
@@ -171,43 +172,44 @@ namespace P.I.DeploymentHelper
             {
                 progressBar.Visible = true;
                 progressBar.Maximum = cachePortableCache.Count() + cachePipelines.Count() + 2;
-                Thread t1 = new Thread(delegate()
-                {   
-                    try
-                    {
-                        if (saveFileDialog.OverwritePrompt)
+                Thread t1 = new Thread(
+                    delegate()
+                    {   
+                        try
                         {
-                            File.Delete(saveFileDialog.FileName);
-                        }
-                        using (ZipArchive newFile = ZipFile.Open(saveFileDialog.FileName, ZipArchiveMode.Create))
-                        {
-                            foreach (string name in cachePortableCache)
+                            if (saveFileDialog.OverwritePrompt)
                             {
-                                var singleConfig = configs.Where(x => x.name == name).FirstOrDefault();
-                                if (singleConfig != null)
+                                File.Delete(saveFileDialog.FileName);
+                            }
+                            using (ZipArchive newFile = ZipFile.Open(saveFileDialog.FileName, ZipArchiveMode.Create))
+                            {
+                                foreach (string name in cachePortableCache)
                                 {
-                                    newFile.CreateEntryFromFile(string.Concat(@"PortableSoftwares\", singleConfig.filename), singleConfig.filename);
+                                    var singleConfig = configs.Where(x => x.name == name).FirstOrDefault();
+                                    if (singleConfig != null)
+                                    {
+                                        newFile.CreateEntryFromFile(string.Concat(@"PortableSoftwares\", singleConfig.filename), singleConfig.filename);
+                                    }
+                                    Invoke((MethodInvoker)delegate { progressBar.PerformStep(); });
                                 }
-                                Invoke((MethodInvoker)delegate { progressBar.PerformStep(); });
-                            }
-                            foreach (string name in cachePipelines)
-                            {
-                                newFile.CreateEntryFromFile(string.Concat(@"Pipelines\", name), string.Concat(@"Pipelines\", name));
-                                Invoke((MethodInvoker)delegate { progressBar.PerformStep(); });
+                                foreach (string name in cachePipelines)
+                                {
+                                    newFile.CreateEntryFromFile(string.Concat(@"Pipelines\", name), string.Concat(@"Pipelines\", name));
+                                    Invoke((MethodInvoker)delegate { progressBar.PerformStep(); });
+                                }
                             }
                         }
-                    }
-                    catch (Exception error)
-                    {
-                        MessageBox.Show(error.ToString());
-                    }                    
+                        catch (Exception error)
+                        {
+                            MessageBox.Show(error.ToString());
+                        }                    
 
-                    Invoke((MethodInvoker)delegate {
-                        progressBar.PerformStep();
-                        progressBar.Visible = false;
-                        progressBar.Value = 1;
+                        Invoke((MethodInvoker)delegate {
+                            progressBar.PerformStep();
+                            progressBar.Visible = false;
+                            progressBar.Value = 1;
+                        });
                     });
-                });
                 t1.Start();
             }
             else
@@ -227,7 +229,32 @@ namespace P.I.DeploymentHelper
         }
         private void FetchPipelinesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Thread fetchPipelines = new Thread(
+                delegate () 
+                {
+                    IEnumerable<string> directories = Directory.GetDirectories(@"\\V10S6-ITFILESRV\Share\Departments\Integration\Other\Deployments\","pipelines",SearchOption.AllDirectories);
+                    foreach(var directory in directories)
+                    {
+                        var directoryName = Path.GetFileName(Directory.GetParent(directory).ToString());
+                        var createdDirectoryPath = Directory.CreateDirectory(string.Concat(pipelinePath, directoryName));
+                        
+                        //access
+                        AppDomain.CurrentDomain.SetPrincipalPolicy(PrincipalPolicy.WindowsPrincipal);
+                        WindowsIdentity idnt = new WindowsIdentity(WindowsIdentity.GetCurrent().Token);
+                        WindowsImpersonationContext context = idnt.Impersonate();
 
+                        //copy
+                        var fileList = Directory.GetFiles(directory);
+                        foreach (var sourceFile in fileList)
+                        {
+                            string fileName = sourceFile.Substring(directory.ToString().Length);
+                            string destFile = string.Concat(createdDirectoryPath.FullName.ToString(), fileName);
+                            File.Copy(sourceFile, destFile, true);
+                        }
+                    }
+
+                });
+            fetchPipelines.Start();
         }
     }
 }
