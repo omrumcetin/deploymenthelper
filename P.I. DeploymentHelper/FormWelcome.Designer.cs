@@ -270,6 +270,7 @@
             this.loadingButton.Location = new System.Drawing.Point(818, 495);
             this.loadingButton.Name = "loadingButton";
             this.loadingButton.Size = new System.Drawing.Size(50, 50);
+            this.loadingButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.loadingButton.TabIndex = 13;
             this.loadingButton.TabStop = false;
             // 
@@ -288,10 +289,10 @@
             this.Controls.Add(this.BttnMinimize);
             this.Controls.Add(this.FilterBox_Pipelines);
             this.Controls.Add(this.ListBox_Pipelines);
+            this.Controls.Add(this.LoadingBar);
             this.Controls.Add(this.ButtonSubmit);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.loadingButton);
-            this.Controls.Add(this.LoadingBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Welcome";

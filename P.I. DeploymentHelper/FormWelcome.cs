@@ -158,8 +158,7 @@ namespace P.I.DeploymentHelper
         private void ButtonSubmit_Click(object sender, EventArgs e)
         {
             //TODO create bat file
-            loadingButton.BringToFront();
-            ButtonSubmit.Enabled = false;
+            
             //create zip file
             IEnumerable<PortableConfigElement> configs = customConfig.portables.Cast<PortableConfigElement>();
             IEnumerable<string> cachePortableCache = ListBox_Portables.SelectedItems.Cast<string>().ToArray();
@@ -175,35 +174,41 @@ namespace P.I.DeploymentHelper
             }
             if (cachePortableCache.FirstOrDefault() != null || cachePipelines.FirstOrDefault() != null)
             {
+                CreateBatchFile(configs);
+                loadingButton.BringToFront();
+                ButtonSubmit.Enabled = false;
                 Thread t1 = new Thread(
                     delegate()
                     {   
-                        try
+                        
+                        if (saveFileDialog.OverwritePrompt)
                         {
-                            if (saveFileDialog.OverwritePrompt)
+                            File.Delete(saveFileDialog.FileName);
+                        }
+                        using (ZipArchive newFile = ZipFile.Open(saveFileDialog.FileName, ZipArchiveMode.Create))
+                        {
+                            foreach (string name in cachePortableCache)
                             {
-                                File.Delete(saveFileDialog.FileName);
-                            }
-                            using (ZipArchive newFile = ZipFile.Open(saveFileDialog.FileName, ZipArchiveMode.Create))
-                            {
-                                foreach (string name in cachePortableCache)
+                                var singleConfig = configs.Where(x => x.name == name).FirstOrDefault();
+                                if (singleConfig != null)
                                 {
-                                    var singleConfig = configs.Where(x => x.name == name).FirstOrDefault();
-                                    if (singleConfig != null)
+                                    try
                                     {
                                         newFile.CreateEntryFromFile(string.Concat(@"PortableSoftwares\", singleConfig.filename), singleConfig.filename);
                                     }
-                                }
-                                foreach (string name in cachePipelines)
-                                {
-                                    newFile.CreateEntryFromFile(string.Concat(@"Pipelines\", name), string.Concat(@"Pipelines\", name));
+                                    catch
+                                    {
+                                        MessageBox.Show($"Couldnt find file in Portables folder : {singleConfig.filename}","File Not Found!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                    }
                                 }
                             }
+                            foreach (string name in cachePipelines)
+                            {
+                                newFile.CreateEntryFromFile(string.Concat(@"Pipelines\", name), string.Concat(@"Pipelines\", name));
+                            }
+                            newFile.CreateEntryFromFile("Deploy.bat", "Deploy.bat");
                         }
-                        catch (Exception error)
-                        {
-                            MessageBox.Show(error.ToString());
-                        }                    
+                                           
 
                         Invoke((MethodInvoker)delegate {
                             loadingButton.SendToBack();
@@ -265,6 +270,65 @@ namespace P.I.DeploymentHelper
                     
                 });
             fetchPipelines.Start();
+        }
+        private void CreateBatchFile(IEnumerable<PortableConfigElement>  configs)
+        {
+            StreamWriter sw = new StreamWriter("Deploy.bat");
+            string zipExecutablePath = string.Empty;
+            bool setEnvironmentVariableForOracle = false;
+            var selectedPortables = ListBox_Portables.SelectedItems.Cast<string>().ToArray();
+            foreach (var selectedPortable in selectedPortables)
+            {
+                if (selectedPortable == "7Zip")
+                {
+                    var zipConfig = configs.Where(x => x.name == "7Zip").FirstOrDefault();
+                    sw.WriteLine("@echo off\n" +
+                        "setlocal\n" +
+                        "cd /d %~dp0\n" +
+                        $"md \"{zipConfig.remotepath}\"" +
+                        $"\nCall :UnZipFile \"{zipConfig.remotepath}\" \"%~dp0{zipConfig.filename}\"" +
+                        "\nexit /b" +
+                        "\n:UnZipFile <ExtractTo> <newzipfile>" +
+                        "\nset vbs=\"%temp%\\_.vbs\"" +
+                        "\nif exist %vbs% del /f /q %vbs%" +
+                        "\n>%vbs% echo set objShell = CreateObject(\"Shell.Application\")" +
+                        "\n>>%vbs% echo set FilesInZip=objShell.NameSpace(%2).items" +
+                        "\n>>%vbs% echo objShell.NameSpace(%1).CopyHere(FilesInZip)" +
+                        "\n>>%vbs% echo Set fso = Nothing" +
+                        "\n>>%vbs% echo Set objShell = Nothing" +
+                        "\ncscript //nologo %vbs%" +
+                        "\nif exist %vbs% del /f /q %vbs%\n");
+                    zipExecutablePath = $"{zipConfig.remotepath}\\7z.exe";
+                }
+            }
+            if (zipExecutablePath == string.Empty)
+            {
+                zipExecutablePath = @"C:\Program Files\7-Zip\7z.exe";
+            }
+            foreach (var selectedPortable in selectedPortables)
+            {
+                if (selectedPortable != "7Zip")
+                {
+                    var portableConfig = configs.Where(x => x.name == selectedPortable).FirstOrDefault();
+                    sw.WriteLine($"md \"{portableConfig.remotepath}\"");
+                    sw.WriteLine($"\"{zipExecutablePath}\" x \"{portableConfig.filename}\" -o\"{portableConfig.remotepath}\"");
+                }
+                if (selectedPortable == "Instant Client Basic") { setEnvironmentVariableForOracle = true; }
+            }
+            if (setEnvironmentVariableForOracle)
+            {
+                var portableConfig = configs.Where(x => x.name == "Instant Client Basic").FirstOrDefault();
+                sw.WriteLine("\n\n@echo off" +
+                    $"\nset /p variable=Do you want to add oracle path({portableConfig.remotepath}) to environment variables(Y\\N): " +
+                    "\nif %variable%==Y goto execute" +
+                    "\nif %variable%==y goto execute" +
+                    "\ngoto end" +
+                    "\n:execute" +
+                    $"\nsetx path \"%PATH%;{portableConfig.remotepath}\" / M" +
+                    "\n:end");
+            }
+            //adding oracle home environment variable
+            sw.Close();
         }
     }
 }
