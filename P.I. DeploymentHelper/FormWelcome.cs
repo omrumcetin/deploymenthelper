@@ -66,15 +66,12 @@ namespace P.I.DeploymentHelper
         {
             Directory.CreateDirectory("Pipelines");
             Directory.CreateDirectory("PortableSoftwares");
-            progressBar.Visible = false;
-            progressBar.Minimum = 1;
-            progressBar.Value = 1;
-            progressBar.Step = 1;
             storedPipelineSelections = ListBox_Pipelines.SelectedItems.Cast<string>().ToArray();
             storedPortableSelections = ListBox_Portables.SelectedItems.Cast<string>().ToArray();
         }
         private void Form_Welcome_Activated(object sender, EventArgs e)
         {
+            //Sources window
             ListBox_Pipelines.Items.Clear();
             files = Directory.EnumerateFiles(pipelinePath, "*.xml", SearchOption.AllDirectories);
             foreach (string file in files)
@@ -91,6 +88,7 @@ namespace P.I.DeploymentHelper
                 }
                 
             }
+            //Portable window
             ListBox_Portables.Items.Clear();
             foreach (PortableConfigElement portableElement in customConfig.portables)
             {
@@ -102,7 +100,10 @@ namespace P.I.DeploymentHelper
                 else
                 {
                     ListBox_Portables.Items.Add(portableElement.name);
-                    portables.Add(portableElement.name);
+                    if (!portables.Contains(portableElement.name))
+                    {
+                        portables.Add(portableElement.name);
+                    }                    
                 }                
             }
 
@@ -111,7 +112,7 @@ namespace P.I.DeploymentHelper
         {
             IEnumerable<string> storedSelections = ListBox_Pipelines.SelectedItems.Cast<string>().ToArray();
             ListBox_Pipelines.Items.Clear();
-            Regex rx = new Regex($"(?i).*{tb_source.Text}.*(?-i)");
+            Regex rx = new Regex($"(?i).*{FilterBox_Pipelines.Text}.*(?-i)");
             foreach (string storedItem in storedSelections)
             {
                 var selectedIndex = ListBox_Pipelines.Items.Add(storedItem);
@@ -131,7 +132,7 @@ namespace P.I.DeploymentHelper
         {
             IEnumerable<string> storedSelections = ListBox_Portables.SelectedItems.Cast<string>().ToArray();
             ListBox_Portables.Items.Clear();
-            Regex rx = new Regex($"(?i).*{tb_portableSource.Text}.*(?-i)");
+            Regex rx = new Regex($"(?i).*{FilterBox_Portables.Text}.*(?-i)");
             foreach (string storedItem in storedSelections)
             {
                 var selectedIndex = ListBox_Portables.Items.Add(storedItem);
@@ -157,7 +158,8 @@ namespace P.I.DeploymentHelper
         private void ButtonSubmit_Click(object sender, EventArgs e)
         {
             //TODO create bat file
-
+            loadingButton.BringToFront();
+            ButtonSubmit.Enabled = false;
             //create zip file
             IEnumerable<PortableConfigElement> configs = customConfig.portables.Cast<PortableConfigElement>();
             IEnumerable<string> cachePortableCache = ListBox_Portables.SelectedItems.Cast<string>().ToArray();
@@ -166,12 +168,13 @@ namespace P.I.DeploymentHelper
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Zip Archive|*.zip";
             saveFileDialog.Title = "Save your Deployment Zip File";
-            saveFileDialog.ShowDialog();
-
+            var dialogResult = saveFileDialog.ShowDialog();
+            if (dialogResult != DialogResult.OK)
+            {
+                return;
+            }
             if (cachePortableCache.FirstOrDefault() != null || cachePipelines.FirstOrDefault() != null)
             {
-                progressBar.Visible = true;
-                progressBar.Maximum = cachePortableCache.Count() + cachePipelines.Count() + 2;
                 Thread t1 = new Thread(
                     delegate()
                     {   
@@ -190,12 +193,10 @@ namespace P.I.DeploymentHelper
                                     {
                                         newFile.CreateEntryFromFile(string.Concat(@"PortableSoftwares\", singleConfig.filename), singleConfig.filename);
                                     }
-                                    Invoke((MethodInvoker)delegate { progressBar.PerformStep(); });
                                 }
                                 foreach (string name in cachePipelines)
                                 {
                                     newFile.CreateEntryFromFile(string.Concat(@"Pipelines\", name), string.Concat(@"Pipelines\", name));
-                                    Invoke((MethodInvoker)delegate { progressBar.PerformStep(); });
                                 }
                             }
                         }
@@ -205,9 +206,8 @@ namespace P.I.DeploymentHelper
                         }                    
 
                         Invoke((MethodInvoker)delegate {
-                            progressBar.PerformStep();
-                            progressBar.Visible = false;
-                            progressBar.Value = 1;
+                            loadingButton.SendToBack();
+                            ButtonSubmit.Enabled = true;
                         });
                     });
                 t1.Start();
@@ -229,6 +229,10 @@ namespace P.I.DeploymentHelper
         }
         private void FetchPipelinesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ListBox_Pipelines.Enabled = false;
+            FilterBox_Pipelines.Enabled = false;
+            LoadingBar.Visible = true;
+            LoadingBar.BringToFront();
             Thread fetchPipelines = new Thread(
                 delegate () 
                 {
@@ -252,7 +256,13 @@ namespace P.I.DeploymentHelper
                             File.Copy(sourceFile, destFile, true);
                         }
                     }
-
+                    Invoke((MethodInvoker)delegate {
+                        ListBox_Pipelines.Enabled = true;
+                        FilterBox_Pipelines.Enabled = true;
+                        LoadingBar.Visible = false;
+                        Form_Welcome_Activated(sender, e);
+                    });
+                    
                 });
             fetchPipelines.Start();
         }

@@ -32,8 +32,8 @@
             this.ListBox_Pipelines = new System.Windows.Forms.ListBox();
             this.ListBox_Portables = new System.Windows.Forms.ListBox();
             this.ButtonSubmit = new System.Windows.Forms.Button();
-            this.tb_source = new System.Windows.Forms.TextBox();
-            this.tb_portableSource = new System.Windows.Forms.TextBox();
+            this.FilterBox_Pipelines = new System.Windows.Forms.TextBox();
+            this.FilterBox_Portables = new System.Windows.Forms.TextBox();
             this.BttnClose = new System.Windows.Forms.Button();
             this.BttnMinimize = new System.Windows.Forms.Button();
             this.LabelWindowTitle = new System.Windows.Forms.Label();
@@ -43,10 +43,13 @@
             this.remoteSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.LoadingBar = new System.Windows.Forms.PictureBox();
+            this.loadingButton = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoadingBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingButton)).BeginInit();
             this.SuspendLayout();
             // 
             // ListBox_Pipelines
@@ -87,13 +90,13 @@
             this.ButtonSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonSubmit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(108)))));
-            this.ButtonSubmit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonSubmit.BackgroundImage")));
             this.ButtonSubmit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ButtonSubmit.FlatAppearance.BorderSize = 0;
             this.ButtonSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonSubmit.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ButtonSubmit.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ButtonSubmit.Location = new System.Drawing.Point(818, 485);
+            this.ButtonSubmit.Image = ((System.Drawing.Image)(resources.GetObject("ButtonSubmit.Image")));
+            this.ButtonSubmit.Location = new System.Drawing.Point(818, 495);
             this.ButtonSubmit.Name = "ButtonSubmit";
             this.ButtonSubmit.Size = new System.Drawing.Size(50, 50);
             this.ButtonSubmit.TabIndex = 2;
@@ -102,27 +105,27 @@
             this.ButtonSubmit.UseVisualStyleBackColor = false;
             this.ButtonSubmit.Click += new System.EventHandler(this.ButtonSubmit_Click);
             // 
-            // tb_source
+            // FilterBox_Pipelines
             // 
-            this.tb_source.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(162)))));
-            this.tb_source.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_source.ForeColor = System.Drawing.Color.White;
-            this.tb_source.Location = new System.Drawing.Point(0, 524);
-            this.tb_source.Name = "tb_source";
-            this.tb_source.Size = new System.Drawing.Size(413, 23);
-            this.tb_source.TabIndex = 3;
-            this.tb_source.TextChanged += new System.EventHandler(this.TextBox_Pipelines_TextChanged);
+            this.FilterBox_Pipelines.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(162)))));
+            this.FilterBox_Pipelines.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FilterBox_Pipelines.ForeColor = System.Drawing.Color.White;
+            this.FilterBox_Pipelines.Location = new System.Drawing.Point(0, 524);
+            this.FilterBox_Pipelines.Name = "FilterBox_Pipelines";
+            this.FilterBox_Pipelines.Size = new System.Drawing.Size(413, 23);
+            this.FilterBox_Pipelines.TabIndex = 3;
+            this.FilterBox_Pipelines.TextChanged += new System.EventHandler(this.TextBox_Pipelines_TextChanged);
             // 
-            // tb_portableSource
+            // FilterBox_Portables
             // 
-            this.tb_portableSource.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(162)))));
-            this.tb_portableSource.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_portableSource.ForeColor = System.Drawing.Color.White;
-            this.tb_portableSource.Location = new System.Drawing.Point(413, 524);
-            this.tb_portableSource.Name = "tb_portableSource";
-            this.tb_portableSource.Size = new System.Drawing.Size(399, 23);
-            this.tb_portableSource.TabIndex = 4;
-            this.tb_portableSource.TextChanged += new System.EventHandler(this.TextBox_Portables_TextChanged);
+            this.FilterBox_Portables.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(162)))));
+            this.FilterBox_Portables.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FilterBox_Portables.ForeColor = System.Drawing.Color.White;
+            this.FilterBox_Portables.Location = new System.Drawing.Point(413, 524);
+            this.FilterBox_Portables.Name = "FilterBox_Portables";
+            this.FilterBox_Portables.Size = new System.Drawing.Size(399, 23);
+            this.FilterBox_Portables.TabIndex = 4;
+            this.FilterBox_Portables.TextChanged += new System.EventHandler(this.TextBox_Portables_TextChanged);
             // 
             // BttnClose
             // 
@@ -186,7 +189,7 @@
             this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(811, 48);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(61, 70);
+            this.menuStrip1.Size = new System.Drawing.Size(60, 60);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90;
@@ -203,7 +206,7 @@
             this.settingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("settingsToolStripMenuItem.Image")));
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.RightToLeftAutoMirrorImage = true;
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(54, 66);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(54, 56);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
@@ -246,12 +249,29 @@
             this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
             // 
-            // progressBar
+            // LoadingBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(815, 469);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(57, 15);
-            this.progressBar.TabIndex = 11;
+            this.LoadingBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(108)))));
+            this.LoadingBar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.LoadingBar.Image = ((System.Drawing.Image)(resources.GetObject("LoadingBar.Image")));
+            this.LoadingBar.Location = new System.Drawing.Point(0, 44);
+            this.LoadingBar.Name = "LoadingBar";
+            this.LoadingBar.Size = new System.Drawing.Size(413, 508);
+            this.LoadingBar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.LoadingBar.TabIndex = 12;
+            this.LoadingBar.TabStop = false;
+            this.LoadingBar.UseWaitCursor = true;
+            this.LoadingBar.Visible = false;
+            // 
+            // loadingButton
+            // 
+            this.loadingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(108)))));
+            this.loadingButton.Image = ((System.Drawing.Image)(resources.GetObject("loadingButton.Image")));
+            this.loadingButton.Location = new System.Drawing.Point(818, 495);
+            this.loadingButton.Name = "loadingButton";
+            this.loadingButton.Size = new System.Drawing.Size(50, 50);
+            this.loadingButton.TabIndex = 13;
+            this.loadingButton.TabStop = false;
             // 
             // Form_Welcome
             // 
@@ -259,18 +279,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(62)))), ((int)(((byte)(72)))));
             this.ClientSize = new System.Drawing.Size(876, 547);
-            this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.tb_portableSource);
+            this.Controls.Add(this.FilterBox_Portables);
             this.Controls.Add(this.ListBox_Portables);
-            this.Controls.Add(this.ButtonSubmit);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.BttnClose);
             this.Controls.Add(this.LabelWindowTitle);
             this.Controls.Add(this.BttnMinimize);
-            this.Controls.Add(this.tb_source);
+            this.Controls.Add(this.FilterBox_Pipelines);
             this.Controls.Add(this.ListBox_Pipelines);
+            this.Controls.Add(this.ButtonSubmit);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.loadingButton);
+            this.Controls.Add(this.LoadingBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Welcome";
@@ -286,6 +307,8 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoadingBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingButton)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,8 +319,8 @@
         private System.Windows.Forms.ListBox ListBox_Pipelines;
         private System.Windows.Forms.ListBox ListBox_Portables;
         private System.Windows.Forms.Button ButtonSubmit;
-        private System.Windows.Forms.TextBox tb_source;
-        private System.Windows.Forms.TextBox tb_portableSource;
+        private System.Windows.Forms.TextBox FilterBox_Pipelines;
+        private System.Windows.Forms.TextBox FilterBox_Portables;
         private System.Windows.Forms.Button BttnClose;
         private System.Windows.Forms.Button BttnMinimize;
         private System.Windows.Forms.Label LabelWindowTitle;
@@ -307,7 +330,8 @@
         private System.Windows.Forms.ToolStripMenuItem remoteSettingsToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.PictureBox LoadingBar;
+        private System.Windows.Forms.PictureBox loadingButton;
     }
 }
 

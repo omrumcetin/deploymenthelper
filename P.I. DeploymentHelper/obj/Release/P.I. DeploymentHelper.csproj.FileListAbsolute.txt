@@ -1,0 +1,12 @@
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. DeploymentHelper\bin\Release\tools.config
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. DeploymentHelper\bin\Release\P.I.DeploymentHelper.exe.config
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. DeploymentHelper\bin\Release\P.I.DeploymentHelper.exe
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. DeploymentHelper\bin\Release\P.I.DeploymentHelper.pdb
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. DeploymentHelper\obj\Release\P.I. DeploymentHelper.csprojAssemblyReference.cache
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. DeploymentHelper\obj\Release\P.I.DeploymentHelper.Form_PortableSoftwares.resources
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. DeploymentHelper\obj\Release\P.I.DeploymentHelper.Form_Welcome.resources
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. DeploymentHelper\obj\Release\P.I.DeploymentHelper.Properties.Resources.resources
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. DeploymentHelper\obj\Release\P.I. DeploymentHelper.csproj.GenerateResource.cache
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. DeploymentHelper\obj\Release\P.I. DeploymentHelper.csproj.CoreCompileInputs.cache
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. DeploymentHelper\obj\Release\P.I.DeploymentHelper.exe
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. DeploymentHelper\obj\Release\P.I.DeploymentHelper.pdb
