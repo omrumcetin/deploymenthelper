@@ -44,10 +44,10 @@
             this.lb_source.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_source.FormattingEnabled = true;
             this.lb_source.ItemHeight = 15;
-            this.lb_source.Location = new System.Drawing.Point(-1, -2);
+            this.lb_source.Location = new System.Drawing.Point(2, 8);
             this.lb_source.Name = "lb_source";
             this.lb_source.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lb_source.Size = new System.Drawing.Size(414, 525);
+            this.lb_source.Size = new System.Drawing.Size(411, 510);
             this.lb_source.TabIndex = 0;
             // 
             // lb_portableSource
@@ -59,10 +59,10 @@
             this.lb_portableSource.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_portableSource.FormattingEnabled = true;
             this.lb_portableSource.ItemHeight = 15;
-            this.lb_portableSource.Location = new System.Drawing.Point(411, -2);
+            this.lb_portableSource.Location = new System.Drawing.Point(411, 8);
             this.lb_portableSource.Name = "lb_portableSource";
             this.lb_portableSource.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lb_portableSource.Size = new System.Drawing.Size(406, 525);
+            this.lb_portableSource.Size = new System.Drawing.Size(406, 510);
             this.lb_portableSource.TabIndex = 1;
             // 
             // button1
@@ -75,9 +75,9 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(816, 485);
+            this.button1.Location = new System.Drawing.Point(820, 487);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 55);
+            this.button1.Size = new System.Drawing.Size(54, 51);
             this.button1.TabIndex = 2;
             this.button1.Text = ">";
             this.button1.UseVisualStyleBackColor = false;

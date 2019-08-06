@@ -33,13 +33,14 @@ namespace P.I.DeploymentHelper
                 lb_source.Items.Add(fileName);
             }
 
-
+            lb_portableSource.Items.Clear();
             var customConfig = (ToolsConfigSection)ConfigurationManager.GetSection("tools");
-
-            foreach (PortableConfigElement portableElement in customConfig.portables){
+            foreach (PortableConfigElement portableElement in customConfig.portables)
+            {
                 lb_portableSource.Items.Add(portableElement.name);
                 portables.Add(portableElement.name);
             }
+
 
 
 
@@ -137,6 +138,10 @@ namespace P.I.DeploymentHelper
             Directory.CreateDirectory("Pipelines");
             Directory.CreateDirectory("PortableSoftwares");
 
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
 
         }
     }
