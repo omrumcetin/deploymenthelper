@@ -22,7 +22,7 @@ namespace P.I.DeploymentHelper
         private IEnumerable<string> storedPortableSelections { get; set; }
         private List<string> portables = new List<string>();
         private readonly string pipelinePath = @"Pipelines\";
-        private ToolsConfigSection customConfig = (ToolsConfigSection)ConfigurationManager.GetSection("tools");
+        
         #endregion
         public Form_Welcome()
         {
@@ -90,6 +90,7 @@ namespace P.I.DeploymentHelper
             }
             //Portable window
             ListBox_Portables.Items.Clear();
+            ToolsConfigSection customConfig = (ToolsConfigSection)ConfigurationManager.GetSection("tools");
             foreach (PortableConfigElement portableElement in customConfig.portables)
             {
                 if (storedPortableSelections.Contains(portableElement.name))
@@ -158,8 +159,9 @@ namespace P.I.DeploymentHelper
         private void ButtonSubmit_Click(object sender, EventArgs e)
         {
             //TODO create bat file
-            
+
             //create zip file
+            ToolsConfigSection customConfig = (ToolsConfigSection)ConfigurationManager.GetSection("tools");
             IEnumerable<PortableConfigElement> configs = customConfig.portables.Cast<PortableConfigElement>();
             IEnumerable<string> cachePortableCache = ListBox_Portables.SelectedItems.Cast<string>().ToArray();
             IEnumerable<string> cachePipelines = ListBox_Pipelines.SelectedItems.Cast<string>().ToArray();

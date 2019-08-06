@@ -11,7 +11,6 @@ namespace P.I.DeploymentHelper
         {
             InitializeComponent();
         }
-
         #region ClassVariables
         private bool windowMovable = false;
         private int mouseValueX;
@@ -19,7 +18,6 @@ namespace P.I.DeploymentHelper
         int selectedIndex = 0;
         bool newEntry = false;
         #endregion
-
         #region Template
         private const int CS_DROPSHADOW = 0x20000;
         protected override CreateParams CreateParams
@@ -49,12 +47,10 @@ namespace P.I.DeploymentHelper
             }
         }
         #endregion
-
         private void BttnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void FormSettings_Load(object sender, EventArgs e)
         {
             var customConfig = (ToolsConfigSection)ConfigurationManager.GetSection("tools");
@@ -66,7 +62,6 @@ namespace P.I.DeploymentHelper
             ComboBoxPortables.SelectedIndex = selectedIndex;
             newEntry = false;
         }
-
         private void ComboBoxPortables_SelectedIndexChanged(object sender, EventArgs e)
         {
             var portableName = ComboBoxPortables.Text;
@@ -82,13 +77,11 @@ namespace P.I.DeploymentHelper
                 }
             }
         }
-
         private void ButtonSave_Click(object sender, EventArgs e)
         {
             var portableName = ComboBoxPortables.Text;
             var xmlDoc = new XmlDocument();
             xmlDoc.Load("tools.config");
-
             if (newEntry && portableName != null)
             {
                 var newNode = xmlDoc.CreateElement("portable");
@@ -106,20 +99,16 @@ namespace P.I.DeploymentHelper
                 singleNode.SetAttribute("filename", TextboxFilename.Text);
                 singleNode.SetAttribute("remotepath", TextboxRemotePath.Text);
                 xmlDoc.Save("tools.config");
-
                 ConfigurationManager.RefreshSection("tools");
-
                 selectedIndex = ComboBoxPortables.SelectedIndex;
             }
             FormSettings_Load(sender, e);
 
         }
-
         private void ButtonCancel_Click(object sender, EventArgs e)
         {
             ComboBoxPortables_SelectedIndexChanged(sender,e);
         }
-
         private void ComboBoxPortables_TextChanged(object sender, EventArgs e)
         {
             var newEntryAttempt = true;
@@ -139,6 +128,5 @@ namespace P.I.DeploymentHelper
             }
             newEntry = newEntryAttempt;
         }
-
     }
 }
