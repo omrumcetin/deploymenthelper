@@ -1,0 +1,15 @@
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. Deployment Helper v2\bin\Debug\P.I.Deployment_Helper_v2.exe.config
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. Deployment Helper v2\bin\Debug\P.I.Deployment_Helper_v2.exe
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. Deployment Helper v2\bin\Debug\P.I.Deployment_Helper_v2.pdb
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. Deployment Helper v2\obj\Debug\P.I. Deployment Helper v2.csprojAssemblyReference.cache
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. Deployment Helper v2\obj\Debug\MainWindow.g.cs
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. Deployment Helper v2\obj\Debug\App.g.cs
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. Deployment Helper v2\obj\Debug\P.I.Deployment_Helper_v2_MarkupCompile.cache
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. Deployment Helper v2\obj\Debug\P.I.Deployment_Helper_v2_MarkupCompile.lref
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. Deployment Helper v2\obj\Debug\MainWindow.baml
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. Deployment Helper v2\obj\Debug\P.I.Deployment_Helper_v2.g.resources
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. Deployment Helper v2\obj\Debug\P.I.Deployment_Helper_v2.Properties.Resources.resources
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. Deployment Helper v2\obj\Debug\P.I. Deployment Helper v2.csproj.GenerateResource.cache
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. Deployment Helper v2\obj\Debug\P.I. Deployment Helper v2.csproj.CoreCompileInputs.cache
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. Deployment Helper v2\obj\Debug\P.I.Deployment_Helper_v2.exe
+D:\Works\D\Deployment\DeploymentHelper\P.I. DeploymentHelper\P.I. Deployment Helper v2\obj\Debug\P.I.Deployment_Helper_v2.pdb
